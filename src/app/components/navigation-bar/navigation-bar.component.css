@@ -1,0 +1,7 @@
+a.navbar-text {
+  text-decoration: none;
+}
+
+a.navbar-text:hover {
+  color: rgba(255, 255, 255, .75);
+}

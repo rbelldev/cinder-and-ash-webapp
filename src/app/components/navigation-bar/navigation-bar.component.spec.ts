@@ -33,6 +33,23 @@ describe('NavigationBarComponent', () => {
 
     const image = anchor.querySelector('img');
     expect(image).not.toBeNull('Could not find image element');
+
+    const toggleButton = navBar.querySelector('button.navbar-toggler');
+    expect(toggleButton).not.toBeNull('Could not find toggle button element');
+
+    const navbarCollapse = navBar.querySelector('div.collapse.navbar-collapse');
+    expect(navbarCollapse).not.toBeNull('Could not find navbar-collapse element');
+
+    const navItemList = navbarCollapse.querySelector('ul.navbar-nav');
+    expect(navItemList).not.toBeNull('Could not find nav-item unordered list element');
+
+    const signIn = navbarCollapse.querySelector('a.navbar-text');
+    expect(signIn).not.toBeNull('could not find sign in anchor element');
+  });
+
+  it('should have the correct ID on the navbar-collapse element', () => {
+    const navbarCollapse = compiled.querySelector('div.collapse.navbar-collapse');
+    expect(navbarCollapse.id).toBe(navbarCollapseElementId);
   });
 
   it('should have a anchor element with its router link set to the app root', () => {
@@ -44,4 +61,35 @@ describe('NavigationBarComponent', () => {
     const image = compiled.querySelector('img');
     expect(image.getAttribute('src')).toBe('../../../assets/images/logo.png');
   });
+
+  it('should have a toggle button', () => {
+    const toggleButton = compiled.querySelector('button.navbar-toggler');
+
+    expect(toggleButton.getAttribute('data-toggle')).toBe('collapse');
+    expect(toggleButton.getAttribute('data-target')).toBe(`#${navbarCollapseElementId}`);
+
+    const icon = toggleButton.querySelector('i.navbar-toggler-icon');
+    expect(icon).not.toBeNull('Could not find icon element');
+  });
+
+  it('should have a list of nav items with routerLinks', () => {
+    const navListItemAnchors = compiled.querySelectorAll('ul.navbar-nav > li.nav-item > a.nav-link');
+    expect(navListItemAnchors.length).toBe(3);
+
+    expect(navListItemAnchors[0].getAttribute('routerLink')).toBe('/');
+    expect(navListItemAnchors[0].textContent).toBe('Home');
+
+    expect(navListItemAnchors[1].getAttribute('routerLink')).toBe('/');
+    expect(navListItemAnchors[1].textContent).toBe('Roster');
+
+    expect(navListItemAnchors[2].getAttribute('routerLink')).toBe('/');
+    expect(navListItemAnchors[2].textContent).toBe('Raid Logs');
+  });
+
+  it('should have a sign in link', () => {
+    const signIn = compiled.querySelector('a.navbar-text');
+    expect(signIn.textContent).toBe('Sign In');
+  });
+
+  const navbarCollapseElementId = `navbar-collapse`;
 });

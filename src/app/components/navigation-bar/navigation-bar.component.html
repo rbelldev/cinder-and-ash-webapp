@@ -1,7 +1,28 @@
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-dark bg-dark navbar-expand-md">
   <a class="navbar-brand" routerLink="/">
     <img src="../../../assets/images/logo.png" width="30" height="30" class="d-inline-block align-top"
          alt="cinder-and-ash-logo">
     Cinder and Ash
   </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+    <i class="navbar-toggler-icon"></i>
+  </button>
+
+  <!--Test-->
+  <div class="collapse navbar-collapse" id="navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Roster</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Raid Logs</a>
+      </li>
+    </ul>
+
+    <a class="navbar-text" routerLink="/">Sign In</a>
+  </div>
 </nav>
