@@ -1,9 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './components/app/app.component';
-import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './components/app/app.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {NavigationBarComponent} from './components/navigation-bar/navigation-bar.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgModule} from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -11,10 +11,12 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
     NavigationBarComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
-    AppRoutingModule
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
