@@ -6,7 +6,7 @@ import {NO_ERRORS_SCHEMA} from '@angular/core';
 describe('App Component', () => {
 
   let fixture: ComponentFixture<AppComponent>;
-  let app: any;
+  let component: AppComponent;
   let compiled: HTMLElement;
 
   beforeEach(async(() => {
@@ -21,7 +21,7 @@ describe('App Component', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(AppComponent);
-    app = fixture.debugElement.componentInstance;
+    component = fixture.debugElement.componentInstance;
 
     fixture.detectChanges();
     compiled = fixture.debugElement.nativeElement;
@@ -30,5 +30,13 @@ describe('App Component', () => {
   it('should should have a navigation bar component', () => {
     const navigationBarComponent = compiled.querySelector('navigation-bar');
     expect(navigationBarComponent).not.toBeNull('Could not find the NavigationBarComponent');
+  });
+
+  it('should have a fluid container with a router-outlet inside', () => {
+    const fluidContainer = compiled.querySelector('div.container-fluid');
+    expect(fluidContainer).not.toBeNull('Could not find div with class fluid-container');
+
+    const routerOutlet = fluidContainer.querySelector('router-outlet');
+    expect(routerOutlet).not.toBeNull('Could not find the router outlet');
   });
 });
