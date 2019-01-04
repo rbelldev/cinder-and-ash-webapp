@@ -4,11 +4,13 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NavigationBarComponent} from './components/navigation-bar/navigation-bar.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgModule} from '@angular/core';
+import { AuthenticationCallbackComponent } from './components/authentication-callback/authentication-callback.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
+    AuthenticationCallbackComponent
   ],
   imports: [
     AppRoutingModule,

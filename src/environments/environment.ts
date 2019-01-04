@@ -3,6 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  AuthenticationConfiguration: {
+    callbackUrl: 'http://localhost:4200/authentication/callback',
+    clientId: 'n0nZNiQpRmooW46MVFlBL1S4Bn2uWc0w',
+    domain: 'rbelldev.auth0.com',
+  },
   production: false
 };
 

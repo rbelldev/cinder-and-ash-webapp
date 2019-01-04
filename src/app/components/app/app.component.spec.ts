@@ -2,12 +2,19 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {AppComponent} from './app.component';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
+import {AuthenticationService} from '../../services/authentication/authentication.service';
+import * as td from 'testdouble';
 
 describe('App Component', () => {
 
   let fixture: ComponentFixture<AppComponent>;
   let component: AppComponent;
   let compiled: HTMLElement;
+  let mockAuthenticationService: AuthenticationService;
+
+  beforeEach(() => {
+    mockAuthenticationService = td.object(AuthenticationService.prototype);
+  });
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -17,6 +24,7 @@ describe('App Component', () => {
       declarations: [
         AppComponent,
       ],
+      providers: [{provide: AuthenticationService, useValue: mockAuthenticationService}],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
 
@@ -38,5 +46,9 @@ describe('App Component', () => {
 
     const routerOutlet = fluidContainer.querySelector('router-outlet');
     expect(routerOutlet).not.toBeNull('Could not find the router outlet');
+  });
+
+  it('should call handleAuthentication', () => {
+    td.verify(mockAuthenticationService.handleAuthentication(), {times: 1});
   });
 });
