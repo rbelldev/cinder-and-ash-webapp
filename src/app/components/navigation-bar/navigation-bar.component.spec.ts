@@ -79,7 +79,7 @@ describe('NavigationBarComponent', () => {
     expect(navListItemAnchors[0].getAttribute('routerLink')).toBe('/');
     expect(navListItemAnchors[0].textContent).toBe('Home');
 
-    expect(navListItemAnchors[1].getAttribute('routerLink')).toBe('/');
+    expect(navListItemAnchors[1].getAttribute('routerLink')).toBe('roster');
     expect(navListItemAnchors[1].textContent).toBe('Roster');
 
     expect(navListItemAnchors[2].getAttribute('routerLink')).toBe('/');

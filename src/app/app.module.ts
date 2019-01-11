@@ -5,12 +5,14 @@ import {NavigationBarComponent} from './components/navigation-bar/navigation-bar
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgModule} from '@angular/core';
 import { AuthenticationCallbackComponent } from './components/authentication-callback/authentication-callback.component';
+import { RosterComponent } from './components/roster/roster.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationBarComponent,
-    AuthenticationCallbackComponent
+    AuthenticationCallbackComponent,
+    RosterComponent
   ],
   imports: [
     AppRoutingModule,
