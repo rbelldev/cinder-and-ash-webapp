@@ -15,7 +15,6 @@ export class GuildService {
 
   getMembers(): Observable<GuildMember[]> {
     return this.publicApiHttpService.get('/guild/members').pipe(map(json => {
-      console.log('here');
       return json.members.map(memberJson => this.guildMemberFactory.build(memberJson));
     }));
   }
