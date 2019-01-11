@@ -31,9 +31,8 @@ export class AuthenticationService {
       }
     );
 
-    this.lock.on('authorization_error', (err) => {
+    this.lock.on('authorization_error', () => {
       this.router.navigate(['/']);
-      console.log(err);
     });
   }
 

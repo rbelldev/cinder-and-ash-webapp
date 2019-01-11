@@ -8,6 +8,9 @@ export const environment = {
     clientId: 'n0nZNiQpRmooW46MVFlBL1S4Bn2uWc0w',
     domain: 'rbelldev.auth0.com',
   },
+  API: {
+    baseUrl: 'http://localhost:4201'
+  },
   production: false
 };
 
