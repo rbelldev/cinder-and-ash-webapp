@@ -7,13 +7,15 @@ import {NgModule} from '@angular/core';
 import {AuthenticationCallbackComponent} from './components/authentication-callback/authentication-callback.component';
 import {RosterComponent} from './components/roster/roster.component';
 import {HttpClientModule} from '@angular/common/http';
+import { RaiderApplicationComponent } from './components/raider-application/raider-application.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationBarComponent,
     AuthenticationCallbackComponent,
-    RosterComponent
+    RosterComponent,
+    RaiderApplicationComponent
   ],
   imports: [
     AppRoutingModule,

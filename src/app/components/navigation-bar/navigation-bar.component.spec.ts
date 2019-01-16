@@ -17,6 +17,7 @@ describe('NavigationBarComponent', () => {
         {path: '', component: EmptyComponent},
         {path: 'roster', component: EmptyComponent},
         {path: 'raid-logs', component: EmptyComponent},
+        {path: 'raider-application', component: EmptyComponent},
       ])],
     })
       .compileComponents();
@@ -93,7 +94,7 @@ describe('NavigationBarComponent', () => {
     expect(navListItemAnchors[2].textContent).toBe('Raid Logs');
 
     const applyButton = compiled.querySelector('ul.navbar-nav > li.nav-item > button.btn.btn-warning');
-    expect(applyButton.getAttribute('routerLink')).toBe('/');
+    expect(applyButton.getAttribute('routerLink')).toBe('raider-application');
     expect(applyButton.textContent).toBe('Apply Now!');
   });
 

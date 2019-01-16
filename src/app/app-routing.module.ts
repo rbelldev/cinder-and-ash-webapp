@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {AuthenticationCallbackComponent} from './components/authentication-callback/authentication-callback.component';
 import {RosterComponent} from './components/roster/roster.component';
 import {GuildMemberResolver} from './resolvers/guild-members/guild-member.resolver';
+import {RaiderApplicationComponent} from './components/raider-application/raider-application.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
     resolve: {
       guildMembers: GuildMemberResolver
     }
+  },
+  {
+    path: 'raider-application',
+    component: RaiderApplicationComponent
   }
 ];
 
