@@ -1,7 +1,4 @@
-export default class GuildMember {
-  name: string;
-  class: string;
-  spec: string;
-  role: string;
-  level: number;
+import {SimpleCharacter} from '../battle-net/world-of-warcraft/simple-character';
+
+export default class GuildMember extends SimpleCharacter {
 }
