@@ -1,7 +1,7 @@
 import {GuildService} from './guild.service';
 import {PublicApiHttpService} from '../public-api-http/public-api-http.service';
 import * as td from 'testdouble';
-import GuildMemberFactory from '../../models/guild-member/guild-member-factory';
+import GuildMemberFactory from '../../models/guild-member/guild-member-factory/guild-member-factory';
 import {of} from 'rxjs';
 import GuildMember from '../../models/guild-member/guild-member';
 

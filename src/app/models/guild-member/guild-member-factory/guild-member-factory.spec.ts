@@ -1,5 +1,5 @@
 import GuildMemberFactory from './guild-member-factory';
-import GuildMember from './guild-member';
+import GuildMember from '../guild-member';
 
 describe('Guild Member Factory', () => {
   it('should map guild member json to a guild member model', () => {

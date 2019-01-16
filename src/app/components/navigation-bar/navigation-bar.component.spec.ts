@@ -1,6 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {NavigationBarComponent} from './navigation-bar.component';
+import {Component} from '@angular/core';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('NavigationBarComponent', () => {
 
@@ -10,7 +12,12 @@ describe('NavigationBarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [NavigationBarComponent]
+      declarations: [NavigationBarComponent, EmptyComponent],
+      imports: [RouterTestingModule.withRoutes([
+        {path: '', component: EmptyComponent},
+        {path: 'roster', component: EmptyComponent},
+        {path: 'raid-logs', component: EmptyComponent},
+      ])],
     })
       .compileComponents();
   }));
@@ -82,8 +89,12 @@ describe('NavigationBarComponent', () => {
     expect(navListItemAnchors[1].getAttribute('routerLink')).toBe('roster');
     expect(navListItemAnchors[1].textContent).toBe('Roster');
 
-    expect(navListItemAnchors[2].getAttribute('routerLink')).toBe('/');
+    expect(navListItemAnchors[2].getAttribute('routerLink')).toBe('raid-logs');
     expect(navListItemAnchors[2].textContent).toBe('Raid Logs');
+
+    const applyButton = compiled.querySelector('ul.navbar-nav > li.nav-item > button.btn.btn-warning');
+    expect(applyButton.getAttribute('routerLink')).toBe('/');
+    expect(applyButton.textContent).toBe('Apply Now!');
   });
 
   it('should have a sign in link', () => {
@@ -92,4 +103,12 @@ describe('NavigationBarComponent', () => {
   });
 
   const navbarCollapseElementId = `navbar-collapse`;
+
+  @Component({
+    template: '',
+    selector: ''
+  })
+  class EmptyComponent {
+
+  }
 });

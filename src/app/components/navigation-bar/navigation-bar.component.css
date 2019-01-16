@@ -5,3 +5,7 @@ a.navbar-text {
 a.navbar-text:hover {
   color: rgba(255, 255, 255, .75);
 }
+
+.last-item {
+  margin-right: 50px;
+}

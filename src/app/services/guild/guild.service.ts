@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {PublicApiHttpService} from '../public-api-http/public-api-http.service';
 import {Observable} from 'rxjs';
 import GuildMember from '../../models/guild-member/guild-member';
-import GuildMemberFactory from '../../models/guild-member/guild-member-factory';
+import GuildMemberFactory from '../../models/guild-member/guild-member-factory/guild-member-factory';
 import {map} from 'rxjs/operators';
 
 @Injectable({
