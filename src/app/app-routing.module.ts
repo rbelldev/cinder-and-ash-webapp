@@ -5,6 +5,8 @@ import {RosterComponent} from './components/roster/roster.component';
 import {GuildMemberResolver} from './resolvers/guild-members/guild-member.resolver';
 import {RaiderApplicationComponent} from './components/raider-application/raider-application.component';
 import {RaiderApplicationStepOneComponent} from './components/raider-application/raider-application-step-one/raider-application-step-one.component';
+import {RaiderApplicationStepTwoComponent} from './components/raider-application/raider-application-step-two/raider-application-step-two.component';
+import {CharacterResolver} from './resolvers/character/character.resolver';
 
 const routes: Routes = [
   {
@@ -23,6 +25,7 @@ const routes: Routes = [
     component: RaiderApplicationComponent,
     children: [
       {path: '', component: RaiderApplicationStepOneComponent},
+      {path: ':realm/:character', component: RaiderApplicationStepTwoComponent, resolve: {character: CharacterResolver}},
     ]
   }
 ];

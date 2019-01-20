@@ -11,6 +11,7 @@ import {RaiderApplicationComponent} from './components/raider-application/raider
 import {RaidScheduleComponent} from './components/raid-schedule/raid-schedule.component';
 import {RosterComponent} from './components/roster/roster.component';
 import { RaiderApplicationStepOneComponent } from './components/raider-application/raider-application-step-one/raider-application-step-one.component';
+import { RaiderApplicationStepTwoComponent } from './components/raider-application/raider-application-step-two/raider-application-step-two.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { RaiderApplicationStepOneComponent } from './components/raider-applicati
     RosterComponent,
     RaiderApplicationComponent,
     RaidScheduleComponent,
-    RaiderApplicationStepOneComponent
+    RaiderApplicationStepOneComponent,
+    RaiderApplicationStepTwoComponent
   ],
   imports: [
     AppRoutingModule,
