@@ -10,6 +10,7 @@ import {NgModule} from '@angular/core';
 import {RaiderApplicationComponent} from './components/raider-application/raider-application.component';
 import {RaidScheduleComponent} from './components/raid-schedule/raid-schedule.component';
 import {RosterComponent} from './components/roster/roster.component';
+import { RaiderApplicationStepOneComponent } from './components/raider-application/raider-application-step-one/raider-application-step-one.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {RosterComponent} from './components/roster/roster.component';
     AuthenticationCallbackComponent,
     RosterComponent,
     RaiderApplicationComponent,
-    RaidScheduleComponent
+    RaidScheduleComponent,
+    RaiderApplicationStepOneComponent
   ],
   imports: [
     AppRoutingModule,
