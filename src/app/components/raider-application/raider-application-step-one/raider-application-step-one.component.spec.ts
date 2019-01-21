@@ -1,15 +1,36 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {RaiderApplicationStepOneComponent} from './raider-application-step-one.component';
+import {Router} from '@angular/router';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import * as td from 'testdouble';
 
 describe('RaiderApplicationStepOneComponent', () => {
   let component: RaiderApplicationStepOneComponent;
   let compiled: HTMLElement;
   let fixture: ComponentFixture<RaiderApplicationStepOneComponent>;
 
+  let mockRouter: any;
+  let mockFormBuilder: FormBuilder;
+
+  let expectedFormGroupConfig: any = {
+    realm: ['', Validators.required],
+    name: ['', Validators.required],
+  };
+
   beforeEach(async(() => {
+    mockRouter = {navigateByUrl: td.function()};
+    mockFormBuilder = td.object(FormBuilder.prototype);
+
+    td.when(mockFormBuilder.group(expectedFormGroupConfig)).thenReturn(buildFormGroup());
+
     TestBed.configureTestingModule({
-      declarations: [RaiderApplicationStepOneComponent]
+      declarations: [RaiderApplicationStepOneComponent],
+      providers: [
+        {provide: Router, useValue: mockRouter},
+        {provide: FormBuilder, useValue: mockFormBuilder},
+      ],
+      imports: [ReactiveFormsModule]
     })
       .compileComponents();
   }));
@@ -40,6 +61,7 @@ describe('RaiderApplicationStepOneComponent', () => {
 
       const input: HTMLInputElement = form.querySelector('.row > .form-group:nth-child(1) > input.form-control');
       expect(input.placeholder).toEqual('Mal\'Ganis');
+      expect(input.getAttribute('formControlName')).toEqual('realm');
     });
 
     it('should have a label and input for \'Character Name\'', () => {
@@ -48,11 +70,46 @@ describe('RaiderApplicationStepOneComponent', () => {
 
       const input: HTMLInputElement = form.querySelector('.row > .form-group:nth-child(2) > input.form-control');
       expect(input.placeholder).toEqual('Knute');
+      expect(input.getAttribute('formControlName')).toEqual('name');
     });
 
     it('should have a submit button', () => {
       const button: HTMLButtonElement = form.querySelector('.form-group > button');
       expect(button.textContent).toEqual('Get Started!');
     });
+
+    it('should disable the submit button if the form group is not valid', () => {
+      const button: HTMLButtonElement = form.querySelector('.form-group > button');
+      expect(button.disabled).toBeTruthy();
+    });
+
+    it('should enable the submit button if the form group is valid', () => {
+      component.formGroup.controls['realm'].setValue('Mal\'Ganis');
+      component.formGroup.controls['name'].setValue('Knute');
+
+      fixture.detectChanges();
+
+      const button: HTMLButtonElement = form.querySelector('.form-group > button');
+      expect(button.disabled).toBeFalsy();
+    });
+
+    it('should navigate when the submit button is clicked', () => {
+      const realm = 'Mal\'Ganis';
+      const name = 'Knute';
+
+      component.formGroup.controls['realm'].setValue(realm);
+      component.formGroup.controls['name'].setValue(name);
+
+      fixture.detectChanges();
+
+      const button: HTMLButtonElement = form.querySelector('.form-group > button');
+      button.click();
+
+      td.verify(mockRouter.navigateByUrl(`raider-application/${realm}/${name}`));
+    });
   });
+
+  function buildFormGroup(): FormGroup {
+    return new FormBuilder().group(expectedFormGroupConfig);
+  }
 });
