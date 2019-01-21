@@ -1,3 +1,11 @@
-<p>
-  raider-application-step-two works!
-</p>
+<div class="media character-info">
+  <img [src]="'http://render-us.worldofwarcraft.com/character/' + character.thumbnail"
+       class="align-self-center mr-3"
+       alt="" height="64px"
+       width="64px">
+
+  <div class="media-body" [ngStyle]="{'color': character.classColor}">
+    <h5 class="mt-0" [ngStyle]="{'color': character.classColor}">{{character.name}} - {{character.realm}}</h5>
+    <h6 class="mb-0">{{character.spec}} {{character.className}}</h6>
+  </div>
+</div>

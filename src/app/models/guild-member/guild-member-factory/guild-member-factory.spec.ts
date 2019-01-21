@@ -5,7 +5,7 @@ describe('Guild Member Factory', () => {
   it('should map guild member json to a guild member model', () => {
     let guildMemberJson = {
       name: 'Knute',
-      class: 'Monk',
+      className: 'Monk',
       spec: 'Brew Master',
       role: 'Tank',
       level: 120
@@ -13,7 +13,7 @@ describe('Guild Member Factory', () => {
 
     let guildMember: GuildMember = new GuildMemberFactory().build(guildMemberJson);
     expect(guildMember.name).toEqual(guildMemberJson.name);
-    expect(guildMember.class).toEqual(guildMemberJson.class);
+    expect(guildMember.className).toEqual(guildMemberJson.className);
     expect(guildMember.spec).toEqual(guildMemberJson.spec);
     expect(guildMember.role).toEqual(guildMemberJson.role);
     expect(guildMember.level).toEqual(guildMemberJson.level);

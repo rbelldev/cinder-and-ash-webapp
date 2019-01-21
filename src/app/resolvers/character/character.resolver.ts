@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve} from '@angular/router';
 import {Observable} from 'rxjs';
-import {SimpleCharacter} from '../../models/battle-net/world-of-warcraft/simple-character';
 import {BattleNetService} from '../../services/battle-net/battle-net.service';
+import {SimpleCharacter} from '../../models/battle-net/world-of-warcraft/simple-character/simple-character';
 
 @Injectable({
   providedIn: 'root'

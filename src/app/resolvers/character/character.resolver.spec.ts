@@ -1,7 +1,7 @@
 import {CharacterResolver} from './character.resolver';
 import * as td from 'testdouble';
 import {BattleNetService} from '../../services/battle-net/battle-net.service';
-import {SimpleCharacter} from '../../models/battle-net/world-of-warcraft/simple-character';
+import {SimpleCharacter} from '../../models/battle-net/world-of-warcraft/simple-character/simple-character';
 import {of} from 'rxjs';
 import {ActivatedRouteSnapshot} from '@angular/router';
 
