@@ -4,6 +4,7 @@ import {RaiderApplicationStepTwoComponent} from './raider-application-step-two.c
 import {of} from 'rxjs';
 import {SimpleCharacter} from '../../../models/battle-net/world-of-warcraft/simple-character/simple-character';
 import {ActivatedRoute} from '@angular/router';
+import {CharacterClass, ClassSpec} from '../../../models/battle-net/world-of-warcraft/character-class/character-class';
 
 describe('RaiderApplicationStepTwoComponent', () => {
   let component: RaiderApplicationStepTwoComponent;
@@ -17,8 +18,9 @@ describe('RaiderApplicationStepTwoComponent', () => {
     expectedCharacter = new SimpleCharacter();
     expectedCharacter.name = 'Knute';
     expectedCharacter.realm = 'Mal\'Ganis';
-    expectedCharacter.className = 'Monk';
-    expectedCharacter.spec = 'Brew Master';
+    expectedCharacter.characterClass = new CharacterClass();
+    expectedCharacter.characterClass.name = 'Monk';
+    expectedCharacter.characterClass.activeSpec = new ClassSpec('Brewmaster', 'Tank');
 
     mockActivatedRoute = {
       data: of({character: expectedCharacter})
@@ -64,7 +66,7 @@ describe('RaiderApplicationStepTwoComponent', () => {
 
     it('should have a subheader in the body with character spec and class', () => {
       const subheader: HTMLHeadingElement = characterInfo.querySelector('.media-body > h6');
-      expect(subheader.textContent).toEqual(`${expectedCharacter.spec} ${expectedCharacter.className}`);
+      expect(subheader.textContent).toEqual(`${expectedCharacter.characterClass.activeSpec.name} ${expectedCharacter.characterClass.name}`);
     });
   });
 });
