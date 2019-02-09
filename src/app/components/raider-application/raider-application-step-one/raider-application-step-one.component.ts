@@ -18,7 +18,6 @@ export class RaiderApplicationStepOneComponent {
   }
 
   public submit() {
-    console.log('click');
     const realm = this.formGroup.controls['realm'].value;
     const name = this.formGroup.controls['name'].value;
 
