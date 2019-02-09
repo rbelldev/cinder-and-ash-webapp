@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "~7.1.0",
     "@angular/router": "~7.1.0",
     "@ng-bootstrap/ng-bootstrap": "^4.0.1",
+    "@ng-select/ng-select": "^2.15.3",
     "auth0-js": "^9.8.2",
     "auth0-lock": "^11.12.1",
     "core-js": "^2.5.4",
