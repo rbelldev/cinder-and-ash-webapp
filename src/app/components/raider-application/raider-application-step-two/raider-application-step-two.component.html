@@ -9,3 +9,29 @@
     <h6 class="mb-0">{{character.characterClass.activeSpec.name}} {{character.characterClass.name}}</h6>
   </div>
 </div>
+
+<form>
+  <div class="form-group">
+    <label>Main Spec</label>
+    <ng-select [items]="character.characterClass.specs" [(ngModel)]="selected"
+               bindLabel="name" bindValue="name"
+               [ngModelOptions]="{standalone: true}">
+
+      <ng-template ng-label-tmp let-item="item">
+        {{item.name}} - {{item.role}}
+      </ng-template>
+
+      <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+
+        <div class="card-body row">
+          <div class="col-3"></div>
+          <div class="col-9">
+            <h5 class="card-title" [ngOptionHighlight]="search">{{item.name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{item.role}}</h6>
+          </div>
+        </div>
+
+      </ng-template>
+    </ng-select>
+  </div>
+</form>

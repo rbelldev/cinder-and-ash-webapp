@@ -13,7 +13,8 @@ describe('App Component', () => {
   let mockAuthenticationService: AuthenticationService;
 
   beforeEach(() => {
-    mockAuthenticationService = td.object(AuthenticationService.prototype);
+    const MockAuthenticationService = td.constructor(AuthenticationService);
+    mockAuthenticationService = new MockAuthenticationService();
   });
 
   beforeEach(async(() => {

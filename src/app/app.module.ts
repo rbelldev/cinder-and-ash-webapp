@@ -12,6 +12,7 @@ import {RaidScheduleComponent} from './components/raid-schedule/raid-schedule.co
 import {RosterComponent} from './components/roster/roster.component';
 import {RaiderApplicationStepOneComponent} from './components/raider-application/raider-application-step-one/raider-application-step-one.component';
 import {RaiderApplicationStepTwoComponent} from './components/raider-application/raider-application-step-two/raider-application-step-two.component';
+import {NgSelectModule} from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {RaiderApplicationStepTwoComponent} from './components/raider-application
     NgbModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

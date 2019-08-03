@@ -9,10 +9,12 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class RaiderApplicationStepTwoComponent {
   public character: SimpleCharacter;
+  public selected: any;
 
   constructor(route: ActivatedRoute) {
     route.data.subscribe(data => {
       this.character = data.character;
+      this.selected = this.character.characterClass.activeSpec.name;
     });
   }
 }

@@ -1,4 +1,22 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
 body {
   background: #212529;
   color: white;
+}
+
+.ng-select .ng-input {
+  border-bottom-color: white;
+}
+
+.ng-select .ng-arrow-wrapper .ng-arrow {
+  color: white;
+}
+
+.ng-select .ng-select-container:after {
+  border-bottom: 1px solid white;
+}
+
+.ng-select .ng-select.container {
+  color: white
 }

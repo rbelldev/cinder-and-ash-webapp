@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
-import {Auth0LockFactory} from './auth0-lock/auth0-lock.factory';
 import {LocalStorageService} from '../local-storage/local-storage.service';
 import {DateTimeService} from '../date-time/date-time.service';
+import {IAuth0LockFactory} from './auth0-lock/auth0-lock.factory';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,8 @@ export class AuthenticationService {
 
   private lock: any;
 
-  constructor(public router: Router, auth0LockFactory: Auth0LockFactory, private localStorageService: LocalStorageService, private dateTimeService: DateTimeService) {
+  constructor(public router: Router, auth0LockFactory: IAuth0LockFactory, private localStorageService: LocalStorageService,
+              private dateTimeService: DateTimeService) {
     this.lock = auth0LockFactory.build();
   }
 

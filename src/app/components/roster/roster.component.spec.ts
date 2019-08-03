@@ -35,7 +35,10 @@ describe('RosterComponent', () => {
     mockActivatedRoute = {
       data: of(resolvedData)
     };
-    mockGuildMemberFilters = td.object(GuildMemberFilters.prototype);
+
+    // mockGuildMemberFilters = td.object(GuildMemberFilters.prototype);
+    const MockGuildMemberFilters = td.constructor(GuildMemberFilters);
+    mockGuildMemberFilters = new MockGuildMemberFilters();
     expectedCoreReadyGuildMembers.forEach(member => {
       td.when(mockGuildMemberFilters.coreReady(member)).thenReturn(true);
     });
@@ -61,7 +64,7 @@ describe('RosterComponent', () => {
   });
 
   function buildGuildMember(name: string, spec: string) {
-    let guildMember = new GuildMember();
+    let guildMember: GuildMember = new GuildMember();
     guildMember.name = name;
     guildMember.spec = spec;
 

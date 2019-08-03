@@ -5,7 +5,7 @@ import {environment} from '../../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class Auth0LockFactory {
+export class Auth0LockFactory implements IAuth0LockFactory {
   build(): Auth0Lock {
     return new Auth0Lock(environment.AuthenticationConfiguration.clientId, environment.AuthenticationConfiguration.domain, {
       autoclose: true,
@@ -18,4 +18,8 @@ export class Auth0LockFactory {
       }
     });
   }
+}
+
+export interface IAuth0LockFactory {
+  build(): Auth0Lock;
 }

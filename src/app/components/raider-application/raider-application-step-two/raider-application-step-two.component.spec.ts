@@ -5,6 +5,8 @@ import {of} from 'rxjs';
 import {SimpleCharacter} from '../../../models/battle-net/world-of-warcraft/simple-character/simple-character';
 import {ActivatedRoute} from '@angular/router';
 import {CharacterClass, ClassSpec} from '../../../models/battle-net/world-of-warcraft/character-class/character-class';
+import {NgSelectModule} from '@ng-select/ng-select';
+import {FormsModule} from '@angular/forms';
 
 describe('RaiderApplicationStepTwoComponent', () => {
   let component: RaiderApplicationStepTwoComponent;
@@ -28,7 +30,8 @@ describe('RaiderApplicationStepTwoComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [RaiderApplicationStepTwoComponent],
-      providers: [{provide: ActivatedRoute, useValue: mockActivatedRoute}]
+      providers: [{provide: ActivatedRoute, useValue: mockActivatedRoute}],
+      imports: [NgSelectModule, FormsModule]
     })
       .compileComponents();
   }));

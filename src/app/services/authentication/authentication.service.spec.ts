@@ -1,6 +1,6 @@
 import {AuthenticationService} from './authentication.service';
 import * as td from 'testdouble';
-import {Auth0LockFactory} from './auth0-lock/auth0-lock.factory';
+import {Auth0LockFactory, IAuth0LockFactory} from './auth0-lock/auth0-lock.factory';
 import {LocalStorageService} from '../local-storage/local-storage.service';
 import {DateTimeService} from '../date-time/date-time.service';
 
@@ -23,7 +23,7 @@ describe('AuthenticationService', () => {
       show: td.function(),
     });
 
-    mockAuth0LockFactory = td.object(Auth0LockFactory.prototype);
+    mockAuth0LockFactory = td.object<IAuth0LockFactory>();
     td.when(mockAuth0LockFactory.build()).thenReturn(mockAuth0Lock);
 
     mockLocalStorageService = td.object(LocalStorageService.prototype);
@@ -34,27 +34,26 @@ describe('AuthenticationService', () => {
 
   describe('Initialization', () => {
     it('should get the auth0Lock from the Auth0LockFactory', () => {
-      const mockAuth0LockFactory = td.object(Auth0LockFactory.prototype);
-      new AuthenticationService(null, mockAuth0LockFactory, null, null);
-      td.verify(mockAuth0LockFactory.build(), {times: 1});
+      td.verify(mockAuth0LockFactory.build());
     });
   });
 
   describe('login()', () => {
     it('should call show() on the auth0Lock', () => {
       authenticationService.login();
-      td.verify(mockAuth0Lock.show(), {times: 1});
+      td.verify(mockAuth0Lock.show());
     });
   });
 
   describe(`handleAuthentication() -- 'authenticated' event`, () => {
-    let authResult = {
-      accessToken: 'expected access token',
-      idToken: 'expected id token',
-      expiresIn: 5
-    };
+    let authResult: { accessToken: string, idToken: string, expiresIn: number };
 
     beforeEach(() => {
+      authResult = {
+        accessToken: 'expected access token',
+        idToken: 'expected id token',
+        expiresIn: 5
+      };
       td.when(mockAuth0Lock.on('authenticated')).thenCallback(authResult);
     });
 
@@ -72,7 +71,7 @@ describe('AuthenticationService', () => {
       const now = new Date(2004, 10, 23).getTime();
       td.when(mockDateTimeService.getTime()).thenReturn(now);
 
-      let expectedExpiryDateInMillisecondsAsString = JSON.stringify((authResult.expiresIn * 1000) + now);
+      const expectedExpiryDateInMillisecondsAsString = JSON.stringify((authResult.expiresIn * 1000) + now);
 
       authenticationService.handleAuthentication();
       td.verify(mockLocalStorageService.setItem(EXPIRES_AT, expectedExpiryDateInMillisecondsAsString));
@@ -84,7 +83,7 @@ describe('AuthenticationService', () => {
     });
 
     it('should not set anything on the session if accessToken is undefined', () => {
-      let authResult = {
+      authResult = {
         accessToken: undefined,
         idToken: 'expected id token',
         expiresIn: 5
@@ -97,7 +96,7 @@ describe('AuthenticationService', () => {
     });
 
     it('should not set anything on the session if idToken is undefined', () => {
-      let authResult = {
+      authResult = {
         accessToken: 'expected access token',
         idToken: undefined,
         expiresIn: 5
@@ -118,11 +117,12 @@ describe('AuthenticationService', () => {
     });
 
     it('should not navigate if accessToken is undefined', () => {
-      let authResult = {
+      authResult = {
         accessToken: undefined,
         idToken: 'expected id token',
         expiresIn: 5
       };
+
       td.when(mockAuth0Lock.on('authenticated')).thenCallback(authResult);
 
       authenticationService.handleAuthentication();
@@ -131,7 +131,7 @@ describe('AuthenticationService', () => {
     });
 
     it('should not navigate if idToken is undefined', () => {
-      let authResult = {
+      authResult = {
         accessToken: 'expected access token',
         idToken: undefined,
         expiresIn: 5
@@ -186,8 +186,8 @@ describe('AuthenticationService', () => {
     });
   });
 
-  const ACCESS_TOKEN: string = 'access_token';
-  const ID_TOKEN: string = 'id_token';
-  const EXPIRES_AT: string = 'expires_at';
+  const ACCESS_TOKEN = 'access_token';
+  const ID_TOKEN = 'id_token';
+  const EXPIRES_AT = 'expires_at';
 
 });

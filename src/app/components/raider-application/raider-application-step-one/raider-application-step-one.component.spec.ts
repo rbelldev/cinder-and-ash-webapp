@@ -13,14 +13,15 @@ describe('RaiderApplicationStepOneComponent', () => {
   let mockRouter: any;
   let mockFormBuilder: FormBuilder;
 
-  let expectedFormGroupConfig: any = {
+  const expectedFormGroupConfig: any = {
     realm: ['', Validators.required],
     name: ['', Validators.required],
   };
 
   beforeEach(async(() => {
     mockRouter = {navigateByUrl: td.function()};
-    mockFormBuilder = td.object(FormBuilder.prototype);
+    const MockFormBuilder = td.constructor(FormBuilder);
+    mockFormBuilder = new MockFormBuilder();
 
     td.when(mockFormBuilder.group(expectedFormGroupConfig)).thenReturn(buildFormGroup());
 
@@ -45,7 +46,8 @@ describe('RaiderApplicationStepOneComponent', () => {
 
   it('should have application instructions', () => {
     const applicationInstructions = compiled.querySelector('.alert.alert-info');
-    expect(applicationInstructions.textContent.trim()).toEqual('Start by entering the REALM and NAME of the character that you wish to apply with and click \"Get Started!\" (US Only).');
+    expect(applicationInstructions.textContent.trim())
+      .toEqual('Start by entering the REALM and NAME of the character that you wish to apply with and click \"Get Started!\" (US Only).');
   });
 
   describe('Form', () => {
